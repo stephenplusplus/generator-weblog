@@ -24,6 +24,9 @@ See how using the following tools helps you worry about... nothing!
 #### The results:
 ![](http://s16.postimg.org/58gu8rvhx/showup_preview.png)
 
+#### Demo:
+[Click here](http://stephenplusplus.github.io/generator-weblog) and type "angular" to pull up a post!
+
 ## Getting started
 - Make sure you have [yo](https://github.com/yeoman/yo) installed:
     `npm install -g yo`

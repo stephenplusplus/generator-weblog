@@ -22,7 +22,7 @@ See how using the following tools helps you worry about... nothing!
 > You already have a free account... now, it's your web host! Just push to the `gh-pages` branch of any of your repositories.
 
 #### The results:
-![](http://s7.postimg.org/hygpi7hfv/showup_sample.png)
+![](http://s16.postimg.org/58gu8rvhx/showup_preview.png)
 
 ## Getting started
 - Make sure you have [yo](https://github.com/yeoman/yo) installed:

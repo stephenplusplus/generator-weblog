@@ -1,0 +1,15 @@
+{
+  "name": "<%= _.slugify(name) %>",
+  "social": {
+    "twitter": "<%= twitter %>",
+    "github": "<%= github.user %>"<% if (facebook) { %>,
+    "facebook": "<%= facebook %>"<% } %>
+  },
+  "endpoint": {
+    "github": {
+      "user": "<%= github.user %>",
+      "repo": "<%= github.repo %>",
+      "branch": "gh-pages"
+    }
+  }
+}

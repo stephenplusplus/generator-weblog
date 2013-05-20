@@ -3,7 +3,11 @@
   "version": "0.0.0",
   "description": "A weblog (blog) generator for Yeoman",
   "keywords": [
-    "yeoman-generator"
+    "yeoman-generator",
+    "blog",
+    "weblog",
+    "markdown",
+    "github pages"
   ],
   "homepage": "https://github.com/stephenplusplus/generator-weblog",
   "bugs": "https://github.com/stephenplusplus/generator-weblog/issues",

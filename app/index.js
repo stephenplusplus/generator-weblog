@@ -14,15 +14,22 @@ var WeblogGenerator = module.exports = function WeblogGenerator(args, options, c
   });
 
   this.on('end', function () {
-    this.installDependencies({ skipInstall: options['skip-install'] });
+    var cb = this.async();
 
-    console.log('Sweet! We\'ve created your blog for you!');
-    console.log('');
-    console.log('To create a new post, run:');
-    console.log('  yo weblog:post'.cyan);
-    console.log('');
-    console.log('To see your changes as you make them, spin up a server:');
-    console.log('  grunt server'.cyan);
+    this.installDependencies();
+
+    var howTo
+    = '\nSweet! We\'ve created your blog for you!'
+    + '\n'
+    + '\nTo create a new post, run:'
+    + '\n'
+    + '\n  yo weblog:post'.cyan
+    + '\n'
+    + '\nTo see your changes as you make them, kick up a server:'
+    + '\n'
+    + '\n  grunt server'.cyan;
+
+    console.log(howTo);
   });
 };
 
@@ -48,7 +55,7 @@ WeblogGenerator.prototype.askFor = function askFor() {
   var prompts = [{
     name: 'blogName',
     message: 'What\'s the name of your blog?'
-  }, {
+  }/*, {
     name: 'githubUser',
     message: 'What\'s your GitHub user name?'
   }, {
@@ -60,7 +67,7 @@ WeblogGenerator.prototype.askFor = function askFor() {
   }, {
     name: 'facebook',
     message: 'And your Facebook username?'
-  }];
+  }*/];
 
   this.prompt(prompts, function (err, props) {
     if (err) {
@@ -70,12 +77,12 @@ WeblogGenerator.prototype.askFor = function askFor() {
     this.name = props.blogName;
 
     this.github = {
-      user: props.githubUser,
-      repo: props.githubRepo
+      user: props.githubUser || '',
+      repo: props.githubRepo || ''
     };
 
-    this.twitter = props.twitter;
-    this.facebook = props.facebook;
+    this.twitter = props.twitter || '';
+    this.facebook = props.facebook || '';
 
     cb();
   }.bind(this));
@@ -83,6 +90,7 @@ WeblogGenerator.prototype.askFor = function askFor() {
 
 WeblogGenerator.prototype.app = function app() {
   this.mkdir('posts');
+  this.template('_index.md', 'posts/index.md');
 
   this.template('_bower.json', 'bower.json');
   this.template('_config.json', 'config.json');

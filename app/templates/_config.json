@@ -1,5 +1,5 @@
 {
-  "name": "<%= _.slugify(name) %>",
+  "name": "<%= name %>",
   "social": {
     "twitter": "<%= twitter %>",
     "github": "<%= github.user %>"<% if (facebook) { %>,

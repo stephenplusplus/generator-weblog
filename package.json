@@ -1,6 +1,6 @@
 {
   "name": "generator-weblog",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A weblog (blog) generator for Yeoman",
   "keywords": [
     "yeoman-generator",

@@ -1,0 +1,20 @@
+{
+  "name": "showup",
+  "version": "0.0.2",
+  "author": {
+    "name": "Stephen Sawchuk"
+  },
+  "description": "A Showdown companion.",
+  "main": "showup.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/stephenplusplus/showup.git"
+  },
+  "dependencies": {
+    "showdown": "~0.3.1"
+  },
+  "gitHead": "250b33d0ca874be4792acd238d2f60a0af15874e",
+  "readme": "# Showup.\n\n### showdown's buddy.\n*Showup is still in a state of active development. Very risky to use, but that's all the more reason to give it a try! Break it, fix it, repeat.*\n\n![](http://s23.postimg.org/4wbfxk0ff/angular_showup_sample.png)\n\n\n## Demo\n[Click here](http://stephenplusplus.github.io/generator-weblog) and type \"angular\" to pull up a post!\n\n\n## About\nThis lil' plugin makes some decisions for you, so it's important you know what these are, should you want to make some overrides.\n\nFirst, here's what's expected and required for this to work:\n\n1. Showup will have full control of a \"container\" div.\n2. You keep a \"wordmap\" JSON file. (details below)\n3. You keep your posts as .md files in a single location.\n4. You like awesome things!\n\n\n#### The structure of your \"wordmap\"\n\n```js\n[\n  \"id:the-filename-of-your-post\",\n  \"every\",\n  \"word\",\n  \"from\",\n  \"your\",\n  \"post\",\n  \"id:the-filename-of-another-one-of-your-posts\",\n  \"every\",\n  \"word\",\n  \"from\",\n  \"this\",\n  \"post\",\n  \"too\"\n]\n```\n\n\n### API\n\n##### Showup.init\nBootstrap the plugin.\n\n```\n@ {\n  container\n    (DOM Element)\n  posts\n    ('path/to/posts/')\n  wordmap\n    ('path/to/wordmap/file.json')\n}\n```\n\n##### Showup.Load\nLoad a markdown file, process, and append to the container.\n\n```\n@ String\n  name of the file, without the '.md' extension\n```\n\n##### Showup.InsertPost\nTakes a block of markdown, processes it, and injects into the container.\n\n```\n@ String\n    block of markdown\n```\n",
+  "readmeFilename": "readme.md",
+  "_id": "showup@0.0.2"
+}

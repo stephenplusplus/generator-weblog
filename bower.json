@@ -2,7 +2,7 @@
   "name": "blog",
   "version": "0.0.0",
   "dependencies": {
-    "showup": "~0.0.1",
+    "showup": "~0.0.2",
     "showdown": "~0.3.1"
   }
 }

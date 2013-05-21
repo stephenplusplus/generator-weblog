@@ -1,0 +1,15 @@
+{
+  "name": "blog",
+  "social": {
+    "twitter": "stephen",
+    "github": "stephen",
+    "facebook": "stephen"
+  },
+  "endpoint": {
+    "github": {
+      "user": "stephen",
+      "repo": "stephen",
+      "branch": "gh-pages"
+    }
+  }
+}

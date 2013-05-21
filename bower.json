@@ -1,0 +1,8 @@
+{
+  "name": "blog",
+  "version": "0.0.0",
+  "dependencies": {
+    "showup": "~0.0.1",
+    "showdown": "~0.3.1"
+  }
+}

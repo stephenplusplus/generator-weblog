@@ -22,10 +22,10 @@ See how using the following tools helps you worry about... nothing!
 > You already have a free account... now, it's your web host! Just push to the `gh-pages` branch of any of your repositories.
 
 #### The results:
-![](http://s16.postimg.org/58gu8rvhx/showup_preview.png)
+[![Sample](http://s23.postimg.org/4wbfxk0ff/angular_showup_sample.png)](http://stephenplusplus.github.io/generator-weblog)
 
 #### Demo:
-[Click here](http://stephenplusplus.github.io/generator-weblog) and type "angular" to pull up a post!
+[Click here](http://stephenplusplus.github.io/generator-weblog). Type "angular" to see the search in action.
 
 ## Getting started
 - Make sure you have [yo](https://github.com/yeoman/yo) installed:

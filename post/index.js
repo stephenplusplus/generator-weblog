@@ -13,17 +13,15 @@ util.inherits(Generator, yeoman.generators.NamedBase);
 Generator.prototype.askFor = function askFor() {
   var cb = this.async();
 
-  var prompts = [{
-    name: 'postName',
-    message: 'What do you want to call this post?'
-  }];
-
-  this.prompt(prompts, function (err, props) {
+  this.prompt({
+    name: 'postTitle',
+    message: 'Title?'
+  }, function (err, props) {
     if (err) {
       return this.emit('error', err);
     }
 
-    this.postName = props.postName;
+    this.postTitle = props.postTitle;
 
     cb();
   }.bind(this));
@@ -36,6 +34,6 @@ Generator.prototype.createFiles = function createFiles() {
   prefix += '-' + today.getDate();
   prefix += '-' + today.getFullYear();
 
-  var filename = prefix + '-' + this._.slugify(this.postName) + '.md';
-  this.write('posts/' + filename, '## ' + this.postName);
+  var filename = prefix + '-' + this._.slugify(this.postTitle) + '.md';
+  this.write('posts/' + filename, '## ' + this.postTitle);
 };

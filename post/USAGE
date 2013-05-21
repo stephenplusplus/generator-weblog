@@ -1,0 +1,11 @@
+To create a new post, run:
+
+  yo weblog:post
+
+To see your changes as you make them, kick up a server:
+
+  grunt server
+
+When you're ready to publish your blog, run:
+
+  grunt build

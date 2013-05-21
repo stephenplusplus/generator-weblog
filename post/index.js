@@ -35,5 +35,5 @@ Generator.prototype.createFiles = function createFiles() {
   prefix += '-' + today.getFullYear();
 
   var filename = prefix + '-' + this._.slugify(this.postTitle) + '.md';
-  this.write('posts/' + filename, '## ' + this.postTitle);
+  this.write('posts/' + filename, '# ' + this.postTitle);
 };

@@ -55,6 +55,15 @@ module.exports = function (grunt) {
   grunt.registerTask('build', 'Build your blog.', function () {
     var words = [];
     var posts = [];
+
+    var ignoredWords = [
+      'the', 'couldn\'t', 'you\'re', 'you\'ve', 'just', 'something', 'some',
+      'thing', 'um', 'ahh', 'ah', 'uh', 'if', 'out', 'at', 'no', 'with', 'had',
+      'got', 'have', 'for', 'it\'s', 'that', 'that\'s', 'from', 'in', 'a', 'of',
+      'them', 'you', 'his', 'her', 'their', 'there', 'how', 'what', 'why',
+      'who', 'when', 'i', 'went', 'to', 'they', 'you\'ll', 'welcome', 'are'
+    ];
+
     var unslug = function (slug) {
       return slug.replace(/(-(\w))/g, function () { return ' ' + arguments[2].toUpperCase(); });
     };
@@ -64,19 +73,41 @@ module.exports = function (grunt) {
         return;
       }
 
+      var wordMap = {};
+
       posts.push(fileName.replace('.md', ''));
       words.push('id:' + fileName.replace('.md', ''));
 
       post = grunt.file.read(post)
-        .replace(/[\W]/gm, ' ')
-        .replace(/\s+/gm, ' ')
+        .toLowerCase()
         .trim()
-        .split(' ');
+        .replace(/\s+/gm, ' ');
 
-      words.push(post);
+      post.split(' ').forEach(function (word) {
+        if (word.length > 5 && ignoredWords.indexOf(word) === -1) {
+          if (wordMap[word]) {
+            wordMap[word].count++;
+          } else {
+            wordMap[word] = {
+              name: word,
+              count: 1
+            };
+          }
+        }
+      });
+
+      wordMap = grunt.util._.chain(wordMap).sortBy('count').reverse().value();
+
+      var postWords = [];
+
+      while (postWords.length < 10) {
+        postWords.push(wordMap[postWords.length] && wordMap[postWords.length].name || '');
+      }
+
+      words.push(postWords);
     });
 
-    words = grunt.util._.flatten(words);
+    words = grunt.util._.chain(words).flatten().reject(function (word) { return !word; }).value();
 
     grunt.file.write('wordmap.json', JSON.stringify(words));
     grunt.file.write('posts/index.md', function () {

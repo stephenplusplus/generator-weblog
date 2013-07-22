@@ -27,25 +27,7 @@ var WeblogGenerator = module.exports = function WeblogGenerator(args, options, c
     + '\n'
     + '\n    grunt build'.cyan;
 
-    var npmInstall
-    = '\n'
-    + '\nInstalling Node dependencies...'
-    + '\n-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-'.yellow
-    + '\n';
-
-    var bowerInstall
-    = '\n'
-    + '\nInstalling Bower dependencies...'
-    + '\n-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-='.yellow
-    + '\n';
-
-    console.log(npmInstall);
-    this.npmInstall('', null, function () {
-      console.log(bowerInstall);
-      this.bowerInstall('', null, function () {
-        console.log(howTo);
-      });
-    }.bind(this));
+    this.installDependencies({ skipInstall: options['skip-install'] });
   });
 };
 
@@ -54,37 +36,14 @@ util.inherits(WeblogGenerator, yeoman.generators.NamedBase);
 WeblogGenerator.prototype.askFor = function askFor() {
   var cb = this.async();
 
-  // welcome message
-  var welcome =
-  '\n     _-----_' +
-  '\n    |       |' +
-  '\n    |' + '--(o)--'.red + '|   .--------------------------.' +
-  '\n   `---------´  |    ' + 'Welcome to Yeoman,'.yellow.bold + '    |' +
-  '\n    ' + '( '.yellow + '_' + '´U`'.yellow + '_' + ' )'.yellow + '   |   ' + 'ladies and gentlemen!'.yellow.bold + '  |' +
-  '\n    /___A___\\   \'__________________________\'' +
-  '\n     |  ~  |'.yellow +
-  '\n   __' + '\'.___.\''.yellow + '__' +
-  '\n ´   ' + '`  |'.red + '° ' + '´ Y'.red + ' `\n';
-
-  console.log(welcome);
+  // have Yeoman greet the user.
+  console.log(this.yeoman);
 
   this.prompt({
     name: 'blogName',
     message: 'What\'s the name of your blog?'
-  }, function (err, props) {
-    if (err) {
-      return this.emit('error', err);
-    }
-
+  }, function (props) {
     this.name = props.blogName;
-
-    this.github = {
-      user: props.githubUser || '',
-      repo: props.githubRepo || ''
-    };
-
-    this.twitter = props.twitter || '';
-    this.facebook = props.facebook || '';
 
     cb();
   }.bind(this));

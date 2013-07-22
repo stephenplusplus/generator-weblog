@@ -13,26 +13,26 @@ See how using the following tools helps you worry about... nothing!
 [Showup](https://github.com/stephenplusplus/showup)
 > Don't worry about style, fetching posts, or implementing search. Showup's got you!
 
-[Grunt](gruntjs.com)
+[Grunt](http://gruntjs.com)
 > While writing your posts, run `grunt server` to see your changes.
 >
 > Then, when you like what you see, just run a `grunt build` before committing to GitHub.
 
-[GitHub](http://github.com)
+[GitHub](https://github.com)
 > You already have a free account... now, it's your web host! Just push to the `gh-pages` branch of any of your repositories.
 
 #### The results:
-[![Sample](http://s23.postimg.org/4wbfxk0ff/angular_showup_sample.png)](http://stephenplusplus.github.io/generator-weblog)
+[![Sample](http://s23.postimg.org/4wbfxk0ff/angular_showup_sample.png)](http://mebutyou.com)
 
 #### Demo:
-[Click here](http://stephenplusplus.github.io/generator-weblog). Type "angular" to see the search in action.
+[Click here](http://mebutyou.com). Type "talking about bower" to see the search in action.
 
 ## Getting started
 - Make sure you have [yo](https://github.com/yeoman/yo) installed:
     `npm install -g yo`
-- Install the generator **locally**: `npm install generator-weblog`
+- Install the generator: `npm install -g generator-weblog`
 - To get your blog going, run: `yo weblog`
-- To create a post, run: `yo weblog:post`
+- To create a post, run: `yo weblog:post "Post Name"`
 - To bundle up your site before committing, run: `grunt build`
 
 ## License

@@ -3,7 +3,7 @@
 var moment = require('moment');
 
 var LIVERELOAD_PORT = 35729;
-var lrSnippet = require('connect-livereload')({port: LIVERELOAD_PORT});
+var lrSnippet = require('connect-livereload')({ port: LIVERELOAD_PORT });
 var mountFolder = function (connect, dir) {
   return connect.static(require('path').resolve(dir));
 };
@@ -14,11 +14,10 @@ module.exports = function (grunt) {
 
   grunt.initConfig({
     watch: {
-      options: {
-        nospawn: true,
-        livereload: LIVERELOAD_PORT
-      },
       livereload: {
+        options: {
+          livereload: LIVERELOAD_PORT
+        },
         files: [
           'index.html',
           'posts/*.md'
@@ -74,6 +73,7 @@ module.exports = function (grunt) {
       }
 
       var wordMap = {};
+      var postWords = [];
 
       posts.push(fileName.replace('.md', ''));
       words.push('id:' + fileName.replace('.md', ''));
@@ -97,8 +97,6 @@ module.exports = function (grunt) {
       });
 
       wordMap = grunt.util._.chain(wordMap).sortBy('count').reverse().value();
-
-      var postWords = [];
 
       while (postWords.length < 10) {
         postWords.push(wordMap[postWords.length] && wordMap[postWords.length].name || '');
@@ -128,6 +126,6 @@ module.exports = function (grunt) {
       });
 
       return file.trim();
-    }());
+    });
   });
 };

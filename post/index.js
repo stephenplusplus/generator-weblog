@@ -4,23 +4,27 @@ var yeoman = require('yeoman-generator');
 
 module.exports = Generator;
 
-function Generator() {
+function Generator(args, options) {
   yeoman.generators.Base.apply(this, arguments);
+
+  if (typeof args[0] === 'string') {
+    this.postTitle = args[0];
+  }
 }
 
 util.inherits(Generator, yeoman.generators.NamedBase);
 
 Generator.prototype.askFor = function askFor() {
+  if (this.postTitle) {
+    return;
+  }
+
   var cb = this.async();
 
   this.prompt({
     name: 'postTitle',
     message: 'Title?'
-  }, function (err, props) {
-    if (err) {
-      return this.emit('error', err);
-    }
-
+  }, function (props) {
     this.postTitle = props.postTitle;
 
     cb();

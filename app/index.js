@@ -2,6 +2,7 @@
 var util = require('util');
 var path = require('path');
 var yeoman = require('yeoman-generator');
+var chalk = require('chalk');
 
 
 var WeblogGenerator = module.exports = function WeblogGenerator(args, options, config) {
@@ -12,20 +13,20 @@ var WeblogGenerator = module.exports = function WeblogGenerator(args, options, c
   this.on('end', function () {
     var howTo
     = '\n'
-    + '\nSweet!'.yellow + ' You now have a very pretty blog!'
-    + '\n-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-'.red
+    + chalk.yellow('\nSweet!') + ' You now have a very pretty blog!'
+    + chalk.red('\n-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-')
     + '\n'
     + '\n  To create a new post, run:'
     + '\n'
-    + '\n    yo weblog:post'.cyan
+    + chalk.cyan('\n    yo weblog:post')
     + '\n'
     + '\n  To see your changes as you make them, kick up a server:'
     + '\n'
-    + '\n    grunt server'.cyan
+    + chalk.cyan('\n    grunt server')
     + '\n'
     + '\n  When you\'re ready to publish your blog, run:'
     + '\n'
-    + '\n    grunt build'.cyan;
+    + chalk.cyan('\n    grunt build');
 
     this.installDependencies({ skipInstall: options['skip-install'] });
   });
